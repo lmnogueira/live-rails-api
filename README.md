@@ -11,14 +11,18 @@ Created by Lucas Nogueira.
 ## Installation
 
 edit your Gemfile
+```ruby
 gem 'live-rails-api', :git => 'git://github.com/lmnogueira/live-rails-api.git'
-
+```
 install gem
+```ruby
 bundle install
+```
 
 update gem
-
+```ruby
 bundle update live-rails-api
+```
 
 ## Demo
 
