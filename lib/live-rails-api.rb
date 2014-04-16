@@ -42,7 +42,7 @@ class LiveRailsApi
     @api.entity_delete args
   end
   def entity_list(args = {})
-    @api.user_entity_list args
+    @api.entity_list args
   end
   def entity_list_bychar(args={})
     @api.entity_list_bychar args
