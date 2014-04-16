@@ -26,6 +26,21 @@ class LiveRail
     end
   end
 
+  def entity_add(args={})
+    path="/entity/add"
+    request path, args
+  end
+
+  def entity_edit(args={})
+    path="/entity/edit"
+    request path, args
+  end
+
+  def entity_delete(args={})
+    path="/entity/delete"
+    request path, args
+  end
+
   def entity_list_bychar(args={})
     path="/entity/list/bychar"
     request path, args
@@ -1396,7 +1411,7 @@ class LiveRail
     request path, args
   end
 
-  def user_entity_list (args={})
+  def entity_list (args={})
     path ="/entity/list"
     response = request path, args
   end
