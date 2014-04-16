@@ -1461,7 +1461,7 @@ class LiveRail
       @cache.set(path, body, response) if @enable_cache && !@chache.nil?
     end
 
-    if response['liverailapi']['status'] == "fail" && response['liverailapi']['error'][0]['code'] == '6'
+    if response['liverailapi']['status'] == "fail" && (response['liverailapi']['error'][0]['code'] == '6' or response['liverailapi']['error'][0]['code'] == '2')
       response = self.login
       if response['liverailapi']['status'] == "success" && path != "/login/"
         response = self.request path, body
