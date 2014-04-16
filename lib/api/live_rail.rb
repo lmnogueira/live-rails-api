@@ -1462,9 +1462,9 @@ class LiveRail
     end
 
     if response['liverailapi']['status'] == "fail" && (response['liverailapi']['error'][0]['code'] == '6' or response['liverailapi']['error'][0]['code'] == '2')
-      response = self.login
+      response = login
       if response['liverailapi']['status'] == "success" && path != "/login/"
-        response = self.request path, body
+        response = request path, body
       end
     end
 
