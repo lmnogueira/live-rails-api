@@ -11,14 +11,14 @@ class LiveRail
     @username = args[:username] || ENV['LIVE_RAIL_USERNAME']
     @password = args[:password] || ENV['LIVE_RAIL_PASSWORD']
     @cache_enable = args[:enable_cache] || false
-    @test = args[:test] || true
+    @env = args[:env] || 'development'
 
 
     if @cache_enable
       @cache = LruCache.new
     end
 
-    if !@test
+    if @env == 'production'
       @url = "http://api4.liverail.com"
     else
       puts "YOU ARE USING LIVE RAIL TEST ENVIRONMENT: please consider to set the TEST parameter to FALSE before going to production to ommit this message."
@@ -1442,7 +1442,7 @@ class LiveRail
   def config(args)
     @cache.enable_cache args[:enable_cache] || false if !@cache.nil?
     @cache.cache_size args[:cache_size] if !@cache.nil? && !args[:cachesize].nil?
-    @test = args[:test] || true
+    @env = args[:env] || 'development'
   end
 
   private

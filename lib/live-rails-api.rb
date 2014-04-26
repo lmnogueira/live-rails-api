@@ -6,7 +6,7 @@ class LiveRailsApi
   include Singleton
 
   def initialize
-    @api = LiveRail.new({enable_cache:true, test:true})
+    @api = LiveRail.new({enable_cache:true, env:ENV['LIVE_RAIL_ENVIRONMENT']})
   end
 
   def config(config)
