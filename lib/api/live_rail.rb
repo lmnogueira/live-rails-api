@@ -13,7 +13,6 @@ class LiveRail
     @cache_enable = args[:enable_cache] || false
     @env = args[:env] || 'development'
 
-
     if @cache_enable
       @cache = LruCache.new
     end
@@ -21,7 +20,7 @@ class LiveRail
     if @env == 'production'
       @url = "http://api4.liverail.com"
     else
-      puts "YOU ARE USING LIVE RAIL TEST ENVIRONMENT: please consider to set the TEST parameter to FALSE before going to production to ommit this message."
+      puts "YOU ARE USING LIVE RAIL TEST ENVIRONMENT: please consider to set the LIVE_RAIL_ENVIRONMENT parameter to 'production' before going to production to ommit this message."
       @url = "http://api4.int.liverail.com"
     end
   end
@@ -1417,7 +1416,8 @@ class LiveRail
   end
 
   def login
-    @cache.clear_cache
+    @cache.clear_cache if !@cache.nil?
+
     path="/login/"
     password = Digest::MD5.hexdigest(@password)
     response = request path, username: @username, password: password
