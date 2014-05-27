@@ -1,21 +1,13 @@
 require 'rest-client'
 require 'json'
 require 'crack'
-require 'api/lru_cache'
 
 class LiveRail
-
-  attr_accessor :cache_enable
 
   def initialize (args)
     @username = args[:username] || ENV['LIVE_RAIL_USERNAME']
     @password = args[:password] || ENV['LIVE_RAIL_PASSWORD']
-    @cache_enable = args[:enable_cache] || false
     @env = args[:env] || 'development'
-
-    if @cache_enable
-      @cache = LruCache.new
-    end
 
     if @env == 'production'
       @url = "http://api4.liverail.com"
@@ -1416,11 +1408,9 @@ class LiveRail
   end
 
   def login
-    @cache.clear_cache if !@cache.nil?
-
     path="/login/"
     password = Digest::MD5.hexdigest(@password)
-    response = request path, username: @username, password: password
+    response = request path, "username=#{@username}&password=#{password}"
 
     if(response['liverailapi']['status'] == 'success')
       @auth_token = response['liverailapi']['auth']['token']
@@ -1440,34 +1430,21 @@ class LiveRail
   end
 
   def config(args)
-    @cache.enable_cache args[:enable_cache] || false if !@cache.nil?
-    @cache.cache_size args[:cache_size] if !@cache.nil? && !args[:cachesize].nil?
     @env = args[:env] || 'development'
   end
 
   private
 
   def request(path, body)
-    response = @cache.get(path, body) if @enable_cache && !@chache.nil?
 
-    p ">>>>> request " + path
+    body[:token] = @auth_token
+    resource = RestClient::Resource.new @url
+    response = resource[path].post body
+
     p response
 
-
-    if response.nil?
-      body[:token] = @auth_token
-      resource = RestClient::Resource.new @url
-      response = resource[path].post body
-
-      p response
-
-      response = Crack::XML.parse(response)
-      response = JSON.parse(response.to_json)
-
-      @cache.set(path, body, response) if @enable_cache && !@chache.nil?
-    end
-
-
+    response = Crack::XML.parse(response)
+    response = JSON.parse(response.to_json)
 
     if response['liverailapi']['status'] == "fail" && (['6', '2', '5', '15'].include? response['liverailapi']['error'][0] ? response['liverailapi']['error'][0]['code'] : response['liverailapi']['error']['code'])
       response = login
