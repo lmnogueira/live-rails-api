@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "This provides a rails client library to use the Liverail API."
   s.authors     = ["Lucas Nogueira"]
   s.email       = 'lucasnogueira@gmail.com'
-  s.files       = ["lib/live-rails-api.rb","lib/api/live_rail.rb","lib/api/lru_cache.rb"]
+  s.files       = ["lib/live-rails-api.rb","lib/api/live_rail.rb"]
   s.homepage    =
     'http://rubygems.org/gems/live-rails-api'
   s.license       = 'MIT'
