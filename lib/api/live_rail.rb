@@ -1450,10 +1450,16 @@ class LiveRail
   def request(path, body)
     response = @cache.get(path, body) if @enable_cache && !@chache.nil?
 
+    p ">>>>> request " + path
+    p response
+
+
     if response.nil?
       body[:token] = @auth_token
       resource = RestClient::Resource.new @url
       response = resource[path].post body
+
+      p response
 
       response = Crack::XML.parse(response)
       response = JSON.parse(response.to_json)
