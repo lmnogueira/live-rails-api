@@ -1437,7 +1437,7 @@ class LiveRail
 
   def request(path, body)
 
-    body[:token] = @auth_token
+    body[:token] = @auth_token if @auth_token
     resource = RestClient::Resource.new @url
     response = resource[path].post body
 
