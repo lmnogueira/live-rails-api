@@ -12,6 +12,6 @@ Gem::Specification.new do |s|
   s.license       = 'MIT'
 
   s.add_runtime_dependency 'rest-client', '~> 1.6', '>= 1.6.7'
-  s.add_runtime_dependency 'json', '~> 1.8', '>= 1.8.1'
+  s.add_runtime_dependency 'json', '~> 1.7', '>= 1.7.7'
   s.add_runtime_dependency 'crack', '~> 0.4', '>= 0.4.2'
 end
