@@ -503,22 +503,22 @@ class LiveRail
   end
   
   def revenue_share_list(args={})
-    path="/revenue/share/list"
+    path="/revenue-share/list"
     request path, args
   end
   
   def revenue_share_add(args={})
-    path="/revenue/share/add"
+    path="/revenue-share/add"
     request path, args
   end
   
   def revenue_share_edit(args={})
-    path="/revenue/share/edit"
+    path="/revenue-share/edit"
     request path, args
   end
   
   def revenue_share_delete(args={})
-    path="/revenue/share/delete"
+    path="/revenue-share/delete"
     request path, args
   end
   
@@ -1413,47 +1413,47 @@ class LiveRail
   end
   
   def location_list_add(args={})
-    path="/location/list/add"
+    path="/location-list/add"
     request path, args
   end
   
   def location_list_edit(args={})
-    path="/location/list/edit"
+    path="/location-list/edit"
     request path, args
   end
   
   def location_list_delete(args={})
-    path="/location/list/delete"
+    path="/location-list/delete"
     request path, args
   end
   
   def location_list_list(args={})
-    path="/location/list/list"
+    path="/location-list/list"
     request path, args
   end
   
   def location_list_resolve_name(args={})
-    path="/location/list/resolve/name"
+    path="/location-list/resolve/name"
     request path, args
   end
   
   def location_list_check_rule_access(args={})
-    path="/location/list/check/rule/access"
+    path="/location-list/check/rule/access"
     request path, args
   end
   
   def location_list_location_add(args={})
-    path="/location/list/location/add"
+    path="/location-list/location/add"
     request path, args
   end
   
   def location_list_location_delete(args={})
-    path="/location/list/location/delete"
+    path="/location-list/location/delete"
     request path, args
   end
   
   def location_list_location_list(args={})
-    path="/location/list/location/list"
+    path="/location-list/location/list"
     request path, args
   end
   
