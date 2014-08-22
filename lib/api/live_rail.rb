@@ -412,19 +412,19 @@ class LiveRail
     request path, args
   end
   def revenue_share_list(args={})
-    path="/revenue/share/list"
+    path="/revenue-share/list"
     request path, args
   end
   def revenue_share_add(args={})
-    path="/revenue/share/add"
+    path="/revenue-share/add"
     request path, args
   end
   def revenue_share_edit(args={})
-    path="/revenue/share/edit"
+    path="/revenue-share/edit"
     request path, args
   end
   def revenue_share_delete(args={})
-    path="/revenue/share/delete"
+    path="/revenue-share/delete"
     request path, args
   end
   def creative_campaign_add(args={})
