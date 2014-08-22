@@ -1774,7 +1774,7 @@ class LiveRail
 
     body[:token] = @auth_token if @auth_token
     resource = RestClient::Resource.new @url
-    response = resource[path].post body.to_query
+    response = resource[path].post body
 
     p response
 
