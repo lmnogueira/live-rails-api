@@ -1745,7 +1745,9 @@ class LiveRail
   def login
     path="/login/"
     password = Digest::MD5.hexdigest(@password)
-    response = request path, "username=#{@username}&password=#{password}"
+    response = request path, { username:@username,
+                               password:password
+                             }
 
     if(response['liverailapi']['status'] == 'success')
       @auth_token = response['liverailapi']['auth']['token']
