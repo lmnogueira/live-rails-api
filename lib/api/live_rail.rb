@@ -1746,8 +1746,7 @@ class LiveRail
     path="/login/"
     password = Digest::MD5.hexdigest(@password)
     response = request path, { username:@username,
-                               password:password
-                             }
+                               password:password }
 
     if(response['liverailapi']['status'] == 'success')
       @auth_token = response['liverailapi']['auth']['token']
@@ -1775,10 +1774,8 @@ class LiveRail
   def request(path, body)
 
     body[:token] = @auth_token if @auth_token
-    resource = RestClient::Resource.new @url
+    resource = RestClient::Resource.new @url, :timeout => 120, :open_timeout => 120
     response = resource[path].post body.to_query
-
-    p response
 
     response = Crack::XML.parse(response)
     response = JSON.parse(response.to_json)
