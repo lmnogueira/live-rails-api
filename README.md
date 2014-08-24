@@ -12,7 +12,7 @@ Created by Lucas Nogueira.
 
 edit your Gemfile
 ```ruby
-gem 'liverails_api', '~> 0.0.3'
+gem 'liverails_api', '~> 0.0.4'
 ```
 install gem
 ```ruby
