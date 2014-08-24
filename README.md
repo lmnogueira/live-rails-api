@@ -40,6 +40,7 @@ export LIVE_RAIL_PASSWORD=myaccountpassword
 ```
 ```ruby
 require('liverails_api');
+LiverailsApi.instance.login
 response = LiverailsApi.instance.partner_list
 ```
 
