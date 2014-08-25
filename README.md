@@ -23,6 +23,12 @@ update gem
 ```ruby
 bundle update live-rails-api
 ```
+## Evironment Variables
+```
+LIVE_RAIL_USERNAME -> liverail account username
+LIVE_RAIL_PASSWORD -> liverail password username
+LIVE_RAIL_ENVIRONMENT-> environment that you need to use. Values: "production" to access ("http://api4.liverail.com") or "development" to access ("http://api4.int.liverail.com") 
+```
 
 ## Demo
 
