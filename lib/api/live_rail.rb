@@ -10,10 +10,10 @@ class LiveRail
     @env = args[:env] || 'development'
 
     if @env == 'production'
-      @url = "http://api4.liverail.com"
+      @url = "https://api4.liverail.com"
     else
       puts "YOU ARE USING LIVE RAIL TEST ENVIRONMENT: please consider to set the LIVE_RAIL_ENVIRONMENT parameter to 'production' before going to production to ommit this message."
-      @url = "http://api4.int.liverail.com"
+      @url = "https://api4.int.liverail.com"
     end
   end
 
@@ -1774,7 +1774,7 @@ class LiveRail
   def request(path, body)
 
     body[:token] = @auth_token if @auth_token
-    resource = RestClient::Resource.new @url, :timeout => 120, :open_timeout => 120
+    resource = RestClient::Resource.new @url, :timeout => 90000000, :open_timeout => 90000000
     response = resource[path].post body.to_query
 
     response = Crack::XML.parse(response)

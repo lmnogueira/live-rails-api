@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'liverails_api'
-  s.version     = '0.0.4'
-  s.date        = '2014-08-23'
+  s.version     = '0.0.8'
+  s.date        = '2015-07-08'
   s.summary     = "LiveRail API"
   s.description = "This provides a rails client library to use the Liverail API."
   s.authors     = ["Lucas Nogueira"]
