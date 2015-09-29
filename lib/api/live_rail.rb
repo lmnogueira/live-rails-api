@@ -1743,6 +1743,7 @@ class LiveRail
   end
 
   def login
+    @auth_token = nil
     path="/login/"
     password = Digest::MD5.hexdigest(@password)
     response = request path, { username:@username,
