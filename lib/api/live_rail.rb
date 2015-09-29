@@ -1783,7 +1783,7 @@ class LiveRail
     if response['liverailapi']['status'] == "fail" && (['6', '2', '5', '15'].include? response['liverailapi']['error'][0] ? response['liverailapi']['error'][0]['code'] : response['liverailapi']['error']['code'])
       response = login
       if response['liverailapi']['status'] == "success" && path != "/login/"
-        response = request path, body.to_query
+        response = request path, body
       end
     end
 
