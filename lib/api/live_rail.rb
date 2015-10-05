@@ -12,7 +12,7 @@ class LiveRail
     if @env == 'production'
       @url = "https://api4.liverail.com"
     else
-      puts "YOU ARE USING LIVE RAIL TEST ENVIRONMENT: please consider to set the LIVE_RAIL_ENVIRONMENT parameter to 'production' before going to production to ommit this message."
+      puts "YOU ARE USING LIVE RAIL TEST ENVIRONMENT: please consider to set the LIVE_RAIL_ENVIRONMENT parameter to 'production' before going to production to omit this message."
       @url = "https://api4.int.liverail.com"
     end
   end
