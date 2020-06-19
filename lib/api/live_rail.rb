@@ -12,7 +12,7 @@ class LiveRail
     if @env == 'production'
       @url = "https://api4.liverail.com"
     else
-      puts "YOU ARE USING LIVE RAIL TEST ENVIRONMENT: please consider to set the LIVE_RAIL_ENVIRONMENT parameter to 'production' before going to production to ommit this message."
+      puts "YOU ARE USING LIVE RAIL TEST ENVIRONMENT: please consider to set the LIVE_RAIL_ENVIRONMENT parameter to 'production' before going to production to omit this message."
       @url = "https://api4.int.liverail.com"
     end
   end
@@ -1743,6 +1743,7 @@ class LiveRail
   end
 
   def login
+    @auth_token = nil
     path="/login/"
     password = Digest::MD5.hexdigest(@password)
     response = request path, { username:@username,
@@ -1783,7 +1784,7 @@ class LiveRail
     if response['liverailapi']['status'] == "fail" && (['6', '2', '5', '15'].include? response['liverailapi']['error'][0] ? response['liverailapi']['error'][0]['code'] : response['liverailapi']['error']['code'])
       response = login
       if response['liverailapi']['status'] == "success" && path != "/login/"
-        response = request path, body.to_query
+        response = request path, body
       end
     end
 
